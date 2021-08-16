@@ -102,6 +102,18 @@ function updateData(pretext, data) {
   document.getElementById(pretext + 'Display').innerText = data.display;
   document.getElementById(pretext + 'WeightClass').innerText = data.weightClass;
   document.getElementById(pretext + 'FormationType').innerText = data.formationType;
+
+  var listing = document.getElementById(pretext + "List");
+
+  while (listing.firstChild) {
+    listing.removeChild(listing.lastChild);
+  }
+
+  for (var index in data.units) {
+    var mech = document.createElement("li");
+    mech.innerText = data.units[index];
+    listing.appendChild(mech);
+  }
 }
 
 function updateStatDisplay(alpha, bravo, charlie) {
@@ -110,11 +122,32 @@ function updateStatDisplay(alpha, bravo, charlie) {
   updateData("charlie", charlie);
 }
 
-function updateCalculationsDisplay(calcs) {
-  document.getElementById('compositionRoll').innerText = calcs.makeupRoll;
-  document.getElementById('alphaFormationRoll').innerText = calcs.formationType.alpha;
-  document.getElementById('bravoFormationRoll').innerText = calcs.formationType.bravo;
-  document.getElementById('charlieFormationRoll').innerText = calcs.formationType.charlie;
+function factionUnitList(faction) {
+  var listRoll = rollDice(1);
+  var factionList = REPUBLIC_OF_THE_SPHERE_DISPLAY[faction].mechs[listRoll];
+  return REPUBLIC_OF_THE_SPHERE[factionList].mechs;
+}
+
+function determineUnits(weightClass, isClan, faction) {
+  console.log(weightClass);
+  console.log(isClan);
+  console.log(faction);
+
+  var compositionRoll = rollDice(1);
+  var composition = (isClan) ? CLAN_COMPOSITION[weightClass][compositionRoll] : REPUBLIC_COMPOSITION[weightClass][compositionRoll];
+
+  console.log(compositionRoll);
+  console.log(composition);
+
+  var results = [];
+
+  for (var weight in composition) {
+    var currentWeight = composition[weight];
+    var unitList = (isClan) ? CLANS[faction].mechs[currentWeight] : factionUnitList(faction)[currentWeight];
+    results.push(unitList[rollDice(2)]);
+  }
+
+  return results;
 }
 
 function determineFormationType(weightClass, roll, clan) {
@@ -127,8 +160,6 @@ function calculateFormation() {
   var bravoLance = {};
   var charlieLance = {};
 
-  var calculations = {};
-
   var weightClass = document.getElementById("weight_composition").value;
   var clanOrCompany = document.getElementById("clan_or_company").value;
 
@@ -137,25 +168,23 @@ function calculateFormation() {
   bravoLance["display"] = (isClan ? "Bravo Star" : "Bravo Lance");
   charlieLance["display"] = (isClan ? "Charlie Star" : "Charlie Lance");
 
-  calculations["makeupRoll"] = rollDice(1);
-
-  var unitMakeup = determineUnitMakeup(weightClass, calculations["makeupRoll"]);
+  var unitMakeup = determineUnitMakeup(weightClass, rollDice(1));
   alphaLance["weightClass"] = unitMakeup[0];
   bravoLance["weightClass"] = unitMakeup[1];
   charlieLance["weightClass"] = unitMakeup[2];
 
-  calculations["formationType"] = {
-    alpha: rollDice(1),
-    bravo: rollDice(1),
-    charlie: rollDice(1)
-  }
+  alphaLance['formationType'] = rollDice(1);
+  bravoLance['formationType'] = rollDice(1);
+  charlieLance['formationType'] = rollDice(1);
 
-  alphaLance['formationType'] = determineFormationType(alphaLance.weightClass, calculations.formationType.alpha, isClan);
-  bravoLance['formationType'] = determineFormationType(bravoLance.weightClass, calculations.formationType.bravo, isClan);
-  charlieLance['formationType'] = determineFormationType(charlieLance.weightClass, calculations.formationType.charlie, isClan);
+  alphaLance['formationType'] = determineFormationType(alphaLance.weightClass, alphaLance.formationType, isClan);
+  bravoLance['formationType'] = determineFormationType(bravoLance.weightClass, bravoLance.formationType, isClan);
+  charlieLance['formationType'] = determineFormationType(charlieLance.weightClass, charlieLance.formationType, isClan);
 
+  alphaLance['units'] = determineUnits(alphaLance.weightClass, isClan, clanOrCompany);
+  bravoLance['units'] = determineUnits(bravoLance.weightClass, isClan, clanOrCompany);
+  charlieLance['units'] = determineUnits(charlieLance.weightClass, isClan, clanOrCompany);
   updateStatDisplay(alphaLance, bravoLance, charlieLance);
-  updateCalculationsDisplay(calculations);
 }
 
 document.onreadystatechange = () => {

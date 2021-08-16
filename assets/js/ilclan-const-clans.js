@@ -267,247 +267,35 @@ const CLAN_FORMATION_TYPE = {
 
 const CLAN_COMPOSITION = {
   light: {
-    1: [
-      {
-        quantity: 5,
-        weight_class: "light"
-      }
-    ],
-    2: [
-      {
-        quantity: 4,
-        weight_class: "light"
-      },
-      {
-        quantity: 1,
-        weight_class: "medium"
-      }
-    ],
-    3: [
-      {
-        quantity: 4,
-        weight_class: "light"
-      },
-      {
-        quantity: 1,
-        weight_class: "medium"
-      }
-    ],
-    4: [
-      {
-        quantity: 3,
-        weight_class: "light"
-      },
-      {
-        quantity: 2,
-        weight_class: "medium"
-      }
-    ],
-    5: [
-      {
-        quantity: 3,
-        weight_class: "light"
-      },
-      {
-        quantity: 2,
-        weight_class: "medium"
-      }
-    ],
-    6: [
-      {
-        quantity: 2,
-        weight_class: "light"
-      },
-      {
-        quantity: 2,
-        weight_class: "medium"
-      },
-      {
-        quantity: 1,
-        weight_class: "heavy"
-      }
-    ]
+    1: ["light", "light", "light", "light", "light"],
+    2: ["light", "light", "light", "light", "medium"],
+    3: ["light", "light", "light", "light", "medium"],
+    4: ["light", "light", "light", "medium", "medium"],
+    5: ["light", "light", "light", "medium", "medium"],
+    6: ["light", "light", "medium", "medium", "heavy"]
   },
   medium: {
-    1: [
-      {
-        quantity: 1,
-        weight_class: "light"
-      },
-      {
-        quantity: 4,
-        weight_class: "medium"
-      }
-    ],
-    2: [
-      {
-        quantity: 5,
-        weight_class: "medium"
-      }
-    ],
-    3: [
-      {
-        quantity: 5,
-        weight_class: "medium"
-      }
-    ],
-    4: [
-      {
-        quantity: 4,
-        weight_class: "medium"
-      },
-      {
-        quantity: 1,
-        weight_class: "heavy"
-      }
-    ],
-    5: [
-      {
-        quantity: 4,
-        weight_class: "medium"
-      },
-      {
-        quantity: 1,
-        weight_class: "heavy"
-      }
-    ],
-    6: [
-      {
-        quantity: 3,
-        weight_class: "medium"
-      },
-      {
-        quantity: 2,
-        weight_class: "heavy"
-      }
-    ]
+    1: ["light", "medium", "medium", "medium", "medium"],
+    2: ["medium", "medium", "medium", "medium", "medium"],
+    3: ["medium", "medium", "medium", "medium", "medium"],
+    4: ["medium", "medium", "medium", "medium", "heavy"],
+    5: ["medium", "medium", "medium", "medium", "heavy"],
+    6: ["medium", "medium", "medium", "heavy", "heavy"]
   },
   heavy: {
-    1: [
-      {
-        quantity: 2,
-        weight_class: "medium"
-      },
-      {
-        quantity: 4,
-        weight_class: "heavy"
-      }
-    ],
-    2: [
-      {
-        quantity: 1,
-        weight_class: "medium"
-      },
-      {
-        quantity: 4,
-        weight_class: "heavy"
-      }
-
-    ],
-    3: [
-      {
-        quantity: 1,
-        weight_class: "medium"
-      },
-      {
-        quantity: 4,
-        weight_class: "heavy"
-      }
-
-    ],
-    4: [
-      {
-        quantity: 5,
-        weight_class: "heavy"
-      }
-    ],
-    5: [
-      {
-        quantity: 5,
-        weight_class: "heavy"
-      }
-    ],
-    6: [
-      {
-        quantity: 1,
-        weight_class: "medium"
-      },
-      {
-        quantity: 3,
-        weight_class: "heavy"
-      },
-      {
-        quantity: 1,
-        weight_class: "assault"
-      }
-    ]
+    1: ["medium", "medium", "heavy", "heavy", "heavy"],
+    2: ["medium", "heavy", "heavy", "heavy", "heavy"],
+    3: ["medium", "heavy", "heavy", "heavy", "heavy"],
+    4: ["heavy", "heavy", "heavy", "heavy", "heavy"],
+    5: ["heavy", "heavy", "heavy", "heavy", "heavy"],
+    6: ["medium", "heavy", "heavy", "heavy", "assault"]
   },
   assault: {
-    1: [
-      {
-        quantity: 1,
-        weight_class: "medium"
-      },
-      {
-        quantity: 2,
-        weight_class: "heavy"
-      },
-      {
-        quantity: 2,
-        weight_class: "assault"
-      }
-    ],
-    2: [
-      {
-        quantity: 4,
-        weight_class: "heavy"
-      },
-      {
-        quantity: 1,
-        weight_class: "assault"
-      }
-
-    ],
-    3: [
-      {
-        quantity: 4,
-        weight_class: "heavy"
-      },
-      {
-        quantity: 1,
-        weight_class: "assault"
-      }
-
-    ],
-    4: [
-      {
-        quantity: 3,
-        weight_class: "heavy"
-      },
-      {
-        quantity: 2,
-        weight_class: "assault"
-      }
-    ],
-    5: [
-      {
-        quantity: 3,
-        weight_class: "heavy"
-      },
-      {
-        quantity: 2,
-        weight_class: "assault"
-      }
-    ],
-    6: [
-      {
-        quantity: 2,
-        weight_class: "heavy"
-      },
-      {
-        quantity: 3,
-        weight_class: "assault"
-      }
-    ]
+    1: ["medium", "heavy", "heavy", "assault", "assault"],
+    2: ["heavy", "heavy", "heavy", "heavy", "assault"],
+    3: ["heavy", "heavy", "heavy", "heavy", "assault"],
+    4: ["heavy", "heavy", "heavy", "assault", "assault"],
+    5: ["heavy", "heavy", "heavy", "assault", "assault"],
+    6: ["heavy", "heavy", "assault", "assault", "assault"]
   },
 }
