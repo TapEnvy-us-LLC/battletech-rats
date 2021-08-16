@@ -174,7 +174,7 @@ const REPUBLIC_OF_THE_SPHERE = {
         "EMP-6D Emperor",
         "CGR-KMZ Charger",
         "TR-XB Trebaruna",
-        "LGB-12R Longbox",
+        "LGB-12R Longbow",
         "GOL-6M Goliath",
         "Phoenix Hawk IIC 7",
         "BNC-9S Banshee",
