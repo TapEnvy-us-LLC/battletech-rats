@@ -230,41 +230,6 @@ const CLAN_WEIGHT_SIZES = {
   }
 }
 
-const CLAN_FORMATION_TYPE = {
-  light: {
-    1: "Battle",
-    2: "Command",
-    3: "Fire",
-    4: "Striker",
-    5: "Striker",
-    6: "Striker"
-  },
-  medium: {
-    1: "Battle",
-    2: "Battle",
-    3: "Command",
-    4: "Fire",
-    5: "Striker",
-    6: "Striker"
-  },
-  heavy: {
-    1: "Assault",
-    2: "Battle",
-    3: "Battle",
-    4: "Command",
-    5: "Fire",
-    6: "Fire"
-  },
-  assault: {
-    1: "Assault",
-    2: "Assault",
-    3: "Battle",
-    4: "Battle",
-    5: "Command",
-    6: "Fire"
-  },
-}
-
 const CLAN_COMPOSITION = {
   light: {
     1: ["light", "light", "light", "light", "light"],

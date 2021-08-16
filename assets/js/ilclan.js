@@ -101,7 +101,6 @@ function determineUnitMakeup(weightClass, roll) {
 function updateData(pretext, data) {
   document.getElementById(pretext + 'Display').innerText = data.display;
   document.getElementById(pretext + 'WeightClass').innerText = data.weightClass;
-  document.getElementById(pretext + 'FormationType').innerText = data.formationType;
 
   var listing = document.getElementById(pretext + "List");
 
@@ -150,11 +149,6 @@ function determineUnits(weightClass, isClan, faction) {
   return results;
 }
 
-function determineFormationType(weightClass, roll, clan) {
-  data = (clan ? CLAN_FORMATION_TYPE : REPUBLIC_FORMATION_TYPE);
-  return data[weightClass][roll];
-}
-
 function calculateFormation() {
   var alphaLance = {};
   var bravoLance = {};
@@ -172,14 +166,6 @@ function calculateFormation() {
   alphaLance["weightClass"] = unitMakeup[0];
   bravoLance["weightClass"] = unitMakeup[1];
   charlieLance["weightClass"] = unitMakeup[2];
-
-  alphaLance['formationType'] = rollDice(1);
-  bravoLance['formationType'] = rollDice(1);
-  charlieLance['formationType'] = rollDice(1);
-
-  alphaLance['formationType'] = determineFormationType(alphaLance.weightClass, alphaLance.formationType, isClan);
-  bravoLance['formationType'] = determineFormationType(bravoLance.weightClass, bravoLance.formationType, isClan);
-  charlieLance['formationType'] = determineFormationType(charlieLance.weightClass, charlieLance.formationType, isClan);
 
   alphaLance['units'] = determineUnits(alphaLance.weightClass, isClan, clanOrCompany);
   bravoLance['units'] = determineUnits(bravoLance.weightClass, isClan, clanOrCompany);
